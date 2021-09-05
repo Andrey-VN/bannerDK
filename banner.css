@@ -82,6 +82,11 @@ article input[type=number] {
     height: 1.5rem;
 }
 
+article input[type=number]:focus{
+    outline: none;
+    border: solid 2.5px #6692b8;
+}
+
 h4 {
     padding: 10px 0;
 }
@@ -96,7 +101,7 @@ caption {
 }
 
 table {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    /* font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; */
     font-size: 14px;
     border-collapse: collapse;
     text-align: center;

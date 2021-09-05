@@ -6,7 +6,6 @@ window.onload = function() {
 };
 
 function hendlerStart() {
-
     controller.startController();
 };
 
@@ -23,6 +22,7 @@ var controller = {
         b = Number(b.value);
 
         if(this.isZero(a, b)) {
+            viev.displayNone();
             alert("Введенное поле не может быть отрицательным значением или нулем");
             return;
         }
@@ -34,6 +34,7 @@ var controller = {
         y = Number(y.value);
 
         if(this.isZero(x, y)) {
+            viev.displayNone();
             alert("Введенное поле не может быть отрицательным значением или нулем");
             return;
         }
@@ -194,11 +195,17 @@ var controller = {
         }
 
         return  this.roundToThousandths(count);
-    }   
+    },
 
 };
 
 var viev = {
+    displayNone: function(){
+        var tagOutput = document.getElementsByTagName("output");
+        for(var i = 0; i < tagOutput.length; i++) {
+            tagOutput[i].innerHTML = null;
+        }
+    },
 
     displayTimber : function(res) {
         var timberRes = document.getElementById("timberRes");
