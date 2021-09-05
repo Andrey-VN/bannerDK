@@ -10,19 +10,25 @@ body {
 	font-size: x-large;
 	position: relative;
     background-color:azure;
+    position: absolute;
 }
 
 header {
-    padding: 20px;
     font-size: 1.6rem;
     background: #588cb9;
     color: white;
+    padding: 20px;;
+}
+
+header p {
+    word-wrap: break-word;
+    padding: 20px;
 }
 
 div#tableContainer {
     display: table;
     border-spacing: 10px;
-    width: 100%;
+    width: auto;
     margin: 20px;
 }
 
@@ -101,7 +107,6 @@ caption {
 }
 
 table {
-    /* font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; */
     font-size: 14px;
     border-collapse: collapse;
     text-align: center;
@@ -127,4 +132,23 @@ td {
 
 th:first-child, td:first-child {
     text-align: left;   
+}
+
+@media screen and (max-width: 600px) {
+    div#tableContainer  {
+        /* width: 100%; */
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    div#tableRow {
+        flex-direction: column;
+    }
+
+    section#outputTable {
+        display: table-row;
+    }
+    
+    section#inputForm {
+        display: table-row;
+    }
 }

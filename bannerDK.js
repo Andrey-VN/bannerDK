@@ -200,6 +200,7 @@ var controller = {
 };
 
 var viev = {
+    
     displayNone: function(){
         var tagOutput = document.getElementsByTagName("output");
         for(var i = 0; i < tagOutput.length; i++) {
