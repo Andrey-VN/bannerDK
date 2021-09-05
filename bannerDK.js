@@ -7,21 +7,7 @@ window.onload = function() {
 
 function hendlerStart() {
 
-    var a = document.getElementById("a");
-    var b = document.getElementById("b");
-
-    a = Number(a.value);
-    b = Number(b.value);
-
-    var x = document.getElementById("x");
-    var y = document.getElementById("y");
-
-    controller.sectionSizeX = Number(x.value)*0.001;
-    controller.sectionSizeY = Number(y.value)*0.001;
-
-    controller.inputValues(a, b);
-    controller.valueYXZero();
-
+    controller.startController();
 };
 
 var controller = {
@@ -29,13 +15,44 @@ var controller = {
     sectionSizeX : 0,
     sectionSizeY : 0,
 
-    valueYXZero : function() {
-        this.sectionSizeX = 0;
-        this.sectionSizeX = 0;
+    startController : function(){
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+
+        a = Number(a.value);
+        b = Number(b.value);
+
+        if(this.isZero(a, b)) {
+            alert("Введенное поле не может быть отрицательным значением или нулем");
+            return;
+        }
+
+        var x = document.getElementById("x");
+        var y = document.getElementById("y");
+
+        x = Number(x.value);
+        y = Number(y.value);
+
+        if(this.isZero(x, y)) {
+            alert("Введенное поле не может быть отрицательным значением или нулем");
+            return;
+        }
+
+        this.sectionSizeX = x*0.001;
+        this.sectionSizeY = y*0.001;
+
+        this.inputValues(a, b);
+        this.valueYXZero();
+    },
+
+    isZero : function(a, b){
+        if(a <= 0 || b <= 0){
+            return true
+        }
+        return false;
     },
 
     inputValues : function(a, b) {
-
         var resBar = this.calculationOfTimber(a, b);
         viev.displayTimber(resBar);
 
@@ -61,9 +78,19 @@ var controller = {
         viev.displayPrintOnBannerForDk(resPrintingOnABannerForDk);
     },
 
+    valueYXZero : function() {
+        this.sectionSizeX = 0;
+        this.sectionSizeX = 0;
+    },
+
+    roundToThousandths : function(res) {
+        return Math.floor(res*1000)/1000;
+    },
+
     calculationOfPrintingOnABannerForDk : function(a, b) {
-        return (a + 2*(this.sectionSizeX + this.sectionSizeY))*
-        (b + 2*(this.sectionSizeX + this.sectionSizeY));
+        var res = a == 0 || b == 0 ? 0 : this.roundToThousandths((a + 2*(this.sectionSizeX + this.sectionSizeY))*
+        (b + 2*(this.sectionSizeX + this.sectionSizeY)));  
+        return res;
     },
 
     calculationOfStapling : function(a, b) {
@@ -74,7 +101,7 @@ var controller = {
         var count;
         
         if ( a < 1 && b < 1) {
-            count = 4;
+            count = a == 0 || b == 0 ? 0 : 8;
             return count;
         }
         else {
@@ -94,7 +121,7 @@ var controller = {
             count += 11*(Math.ceil(b/4) - 1);  //подогнал
         }
 
-        return  count*2*(this.sectionSizeY + this.sectionSizeX);
+        return  this.roundToThousandths(count*2*(this.sectionSizeY + this.sectionSizeX));
     },   
 
     calculationOfSelfTappingScrewsForInstallation : function(a, b) {
@@ -110,18 +137,19 @@ var controller = {
             res += 2*(Math.ceil(a/4) - 1);
         }
         
-        return res;
+        return this.roundToThousandths(res);
     },
 
     calculationOfStaples : function(a, b) {
         var value = (2*(a + b)/0.05)*0.001
-        return value;
+        return this.roundToThousandths(value);
     },
 
     calculationOfTimber : function(a, b) {
         var res = 2*(a + b);
 
-        if ( a < 1 && b < 1) {           
+        if ( a < 1 && b < 1) { 
+            res = a == 0 || b == 0 ? 0 : 8;         
             return res;
         }
         if(a >= 2) {
@@ -136,14 +164,14 @@ var controller = {
         res += (Math.ceil(b/4));
         res += a*(Math.ceil(b/4) - 1);
 
-        return res;
+        return this.roundToThousandths(res);
     },
 
     calculationOfSelfTappingScrews : function(a, b) {
         var count;
 
         if ( a < 1 && b < 1) {
-            count = 8;
+            count = a == 0 || b == 0 ? 0 : 8;
             return count;
         }
         else {
@@ -165,7 +193,7 @@ var controller = {
             count += 12*(Math.ceil(b/4) - 1);  //подогнал
         }
 
-        return  count;
+        return  this.roundToThousandths(count);
     }   
 
 };
