@@ -4,17 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="banner.css">
     <title>BannerDK</title>
 </head>
-<body style="padding: 100px 0;">
-    <form>
-        Длина:<input type="number" id="a"><br>
-        Ширина:<input type="number" id="b" ><br>
-        <input type="button" id="start" value="Start"><br>
-        Брус: <output id="timberRes"></output><br>
-        Саморезы: <output id="selfTappingScrewRes"></output><br>
-    </form>
+<body>
+    <header>
+        Расчет количества операций и материала для изготовления баннера на деревянном каркасе
+    </header>
+    <div id="tableContainer">
+        <div class="tableClass" id="tableRow">
+            <section id="outputTable">
+                <article>
+                    <table>
+                        <caption>Материалы</caption>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Количество</th>
+                            <th>Еденица измерения</th>
+                        </tr>
+                        <tr>
+                            <td>Брус</td>
+                            <td><output id="timberRes" type="number"></output></td>
+                            <td>м</td>
+                        </tr>
+                        <tr>
+                            <td>Саморезы</td>
+                            <td><output id="selfTappingScrewRes"></td>
+                            <td>шт</td>
+                        </tr>
+                        <tr>
+                            <td>Скобы для степлера</td>
+                            <td><output id="staples"> </output></td>
+                            <td>упак.</td>
+                        </tr>
+                        <tr>
+                            <td>Дюбель-саморез(для монтажа)</td>
+                            <td><output id="selfTappingScrewForMounting"></output></td>
+                            <td>шт</td>
+                        </tr>
+                    </table>  
+                    <table> 
+                        <caption>Операции</caption>  
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Количество</th>
+                            <th>Еденица измерения</th>
+                        </tr>
+                        <tr>
+                            <td>Порезка деревянной заготовки торцевой пилой</td>
+                            <td><output id="cuttingOfABar"></output></td>
+                            <td>м</td>
+                        </tr>
+                        <tr>
+                            <td>Сверление отверстия(дерово)</td>
+                            <td><output id="drillingAHoleInWood"></td>
+                            <td>шт</td>
+                        </tr>
+                        <tr>
+                            <td>Скрепление саморезом(дерево)</td>
+                            <td><output id="selfTappingWoodFastening"></output></td>
+                            <td>шт</td>
+                        </tr>
+                        <tr>
+                            <td>Скрепление скобами</td>
+                            <td><output id="stapling"></output></td>
+                            <td>м</td>
+                        </tr>
+                        <tr>
+                            <td>Монтаж(дюбель/саморез)</td>
+                            <td><output id="mountingDowelSelfTappingScrew"></td>
+                            <td>шт</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <caption>Печать</caption>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Количество</th>
+                            <th>Еденица измерения</th>
+                        </tr>
+                        <tr>
+                            <td>Печать на баннере</td>
+                            <td><output id="bannerPrinting"></output></td>
+                            <td>м2</td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+            <section id="inputForm">
+                <article id="articleForm">
+                <form>
+                    <h4>Габариты изделия</h4>
+                    Ширина(м): <input type="number" id="a"><br>
+                    Высота(м): <input type="number" id="b" ><br>
+                    <br>
+                    <h4>Сечение бруса</h4>
+                    X(мм): <input type="number" id="x" value="20"><br>
+                    Y(мм): <input type="number" id="y" value="40"><br>
+                    <br>
+                    <input type="button" id="start" value="Рассчитать"><br>
+                    <br>                      
+                </form>
+                </article>
+            </section>
+        </div>
+    </div>
     <script src="bannerDK.js"></script>
 </body>
 </html>

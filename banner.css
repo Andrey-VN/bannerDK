@@ -1,0 +1,125 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial;
+}
+
+body {
+    margin : 0px;
+	font-size: x-large;
+	position: relative;
+    background-color:azure;
+}
+
+header {
+    padding: 20px;
+    font-size: 1.6rem;
+    background: #588cb9;
+    color: white;
+}
+
+div#tableContainer {
+    display: table;
+    border-spacing: 10px;
+    width: 100%;
+    margin: 20px;
+}
+
+div#tableRow {
+    display: table-row;
+}
+
+section#outputTable {
+    display: table-cell;
+    vertical-align: top;
+    /* box-shadow: 0 0 0 1px cornflowerblue; */
+    padding: 10px;
+    width: 50%;
+}
+
+caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+section#inputForm {
+    margin-left: 20px;
+    display: table-cell;
+    padding-left: 20px ;
+    padding-top: 40px;
+    text-align: left;
+    padding: 10px;
+}
+
+article#articleForm {
+    margin: 68px 0;
+	background: #D8E6F3;
+	width: 500px;
+    padding: 20px;
+}
+
+article input[type=button] {
+    width: 100%;
+    height: 50px;
+    border-color: #8ab9e2;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #c6e1f8;	
+}
+
+article input[type="number"]::-webkit-outer-spin-button,
+article input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+article input[type=number] {
+    text-align: center;
+	border: solid 2px #aacbe7;
+	border-radius: 5px;
+    height: 1.5rem;
+}
+
+h4 {
+    padding: 10px 0;
+}
+ 
+
+article input[type=button]:hover{
+    background-color: #cee8ff;
+}
+
+caption {
+    margin: 10px;
+}
+
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 20px 0 ;   
+}
+
+th, td:first-child {
+    background: #8ab9e2;
+    color: white;
+    padding: 10px 20px;
+}
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    width: 400px;
+}
+
+td {
+    background: #D8E6F3;
+}
+
+th:first-child, td:first-child {
+    text-align: left;   
+}
